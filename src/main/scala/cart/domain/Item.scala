@@ -15,6 +15,6 @@ object Item {
   }
 
   //for sake of convenience for exercise
-  val APPLE = from("apple", 0.60);
-  val ORANGE = from("orange", 0.25);
+  val APPLE = from("apple", 0.60)
+  val ORANGE = from("orange", 0.25)
 }
