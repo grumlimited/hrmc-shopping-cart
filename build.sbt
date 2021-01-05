@@ -1,5 +1,5 @@
 val commonSettings = Seq(
-  scalaVersion := "2.12.8"
+  scalaVersion := "2.13.4"
 )
 
 lazy val root = (project in file("."))
@@ -7,8 +7,10 @@ lazy val root = (project in file("."))
   .settings(
     name := "shopping_cart"
   )
+  .settings(parallelExecution in Test := false)
   .settings(libraryDependencies ++= Seq(
-    "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-    "org.scalacheck" %% "scalacheck" % "1.14.0" % Test)
+    "org.typelevel" %% "cats-core" % "2.3.1",
+    "co.fs2" %% "fs2-io" % "3.0-5795280",
+    "org.scalatest" %% "scalatest" % "3.2.3" % Test,
+    "org.scalacheck" %% "scalacheck" % "1.15.2" % Test)
   )
-
