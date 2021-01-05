@@ -3,7 +3,7 @@ package cart.algebra
 import cart.domain.Discounts.{Apples, Oranges}
 import cart.domain.{Basket, Item}
 import cats.effect.unsafe.implicits.global
-import flow.CartFlow._
+import CartFlow._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -59,7 +59,7 @@ class CartCalculationsSpec extends AnyFlatSpec with Matchers {
     2.05 should be(checkout)
   }
 
-  "The example from test specs with now an apple discount" should "have a check out value of 2.05" in {
+  "The example from test specs with now an apple discount" should "have a check out value of 1.45" in {
     val checkout = Basket.EMPTY
       .discounted(Apples)
       .add(Item.APPLE)

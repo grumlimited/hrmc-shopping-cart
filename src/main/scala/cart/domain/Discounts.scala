@@ -11,9 +11,8 @@ object Discounts {
 
     val APPLE_REF = Item.APPLE
 
-    override def discount(items: List[Item]): BigDecimal = {
+    override def discount(items: List[Item]): BigDecimal =
       items.count(_.name == APPLE_REF.name) / 2 * APPLE_REF.price
-    }
   }
 
   object Oranges extends Discount {

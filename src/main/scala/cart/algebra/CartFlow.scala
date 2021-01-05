@@ -1,6 +1,5 @@
-package flow
+package cart.algebra
 
-import cart.algebra.CartCalculations
 import cart.domain.Discounts.Discount
 import cart.domain.{Basket, Item}
 import cats.effect.IO
@@ -18,10 +17,10 @@ object CartFlow {
   def discounted(cart: fs2.Stream[IO, Basket], discount: Discount): fs2.Stream[IO, Basket] = {
     val sDiscount = fs2.Stream.emit(discount).covary[IO]
 
-    cart.zipWith(sDiscount)((b, i) => b.copy(discounts = b.discounts + i))
+    cart.zipWith(sDiscount)((b, d) => b.copy(discounts = b.discounts + d))
   }
 
-  def checkout(cart: fs2.Stream[IO, Basket]): fs2.Stream[IO, BigDecimal] = cart.map(CartCalculations.checkout)
+  def checkout(cart: fs2.Stream[IO, Basket]): fs2.Stream[IO, BigDecimal] = cart.map(_.amount)
 
   implicit def toOps(s: fs2.Stream[IO, Basket]): CartFlowOps = new CartFlowOps(s)
 }

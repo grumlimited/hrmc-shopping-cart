@@ -1,13 +1,25 @@
 package cart.domain
 
+import cart.algebra.CartFlow
 import cart.domain.Discounts.Discount
 import cats.effect.IO
-import flow.CartFlow
 
 import scala.languageFeature.implicitConversions
 
 // using a List[] on purpose
-case class Basket(items: List[Item], discounts: Set[Discounts.Discount])
+case class Basket(items: List[Item], discounts: Set[Discounts.Discount]) {
+  def amount: BigDecimal = {
+    val fullPrice =
+      if (items.isEmpty) BigDecimal(0) // or use fold
+      else items.map(_.price).sum
+
+    val discount =
+      if (discounts.isEmpty) BigDecimal(0)
+      else discounts.map(_.discount(items)).sum
+
+    fullPrice - discount
+  }
+}
 
 case object Basket {
   val EMPTY = Basket(List.empty, Set.empty)

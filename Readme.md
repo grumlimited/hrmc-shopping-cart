@@ -12,7 +12,7 @@ Test specifications do mention:
     Make reasonable assumptions about the inputs to your solution; for example, many
     candidates take a list of strings as input
 
-I did not think of the exercise as being one of CLI argument parsing. The resulting code concentrates on
+I did not think of the exercise as being one of CLI-arguments parsing. The resulting code concentrates on
 basket and items operations.
 
 As such there is no user input per se.
@@ -22,7 +22,7 @@ As such there is no user input per se.
 ### Dsl
 
 Whilst potentially not strictly required to bring in libraries such as `fs2` and `cats` for this exercise, they nonetheless 
-allows for ease of writing simple enough DSL like basket operations; ie:
+allow for ease of writing simple enough DSL-like operations, ie:
 
     val checkout = Basket.EMPTY
       .discounted(Apples)
@@ -50,7 +50,7 @@ allows for ease of writing simple enough DSL like basket operations; ie:
 
 `items` is a simple `List`. Partly because it is assumed such a list would not grow to any extraordinary sizes.
 Partly because there are no requirements at present that would require a more complex data structure,
-allowing for example for more complex discount calculations.
+allowing for example for more advanced discount calculations.
 
 
 ### Todos
